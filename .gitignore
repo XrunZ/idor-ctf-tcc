@@ -1,0 +1,18 @@
+# Mengabaikan database SQLite agar tidak ter-upload
+*.db
+*.db-journal
+
+# Mengabaikan cache kompilasi Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Mengabaikan folder environment lokal (jika ada)
+venv/
+.venv/
+env/
+
+# Mengabaikan file log / OS metadata
+*.log
+.DS_Store

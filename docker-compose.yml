@@ -1,0 +1,11 @@
+services:
+  sawitnet-ctf:
+    build: .
+    container_name: sawitnet-idor-ctf
+    ports:
+      - "5000:5000"
+    restart: unless-stopped
+    environment:
+      # Nilai default ini adalah dummy untuk pengujian lokal. Ganti di server produksi.
+      - FLAG_B64=VkVORGUxY2tSVjgxZFVOak15UmZNVVF3VWw5QmF5UXpKRjgwUkcwaGJsOVFjakJtSVd3elgxY2hibjA9
+

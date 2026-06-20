@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Profil — SawitNet{% endblock %}
+{% block page_title %}Profil Saya{% endblock %}
+{% block sb_role %}{{ user['perusahaan'][:18] }}{% endblock %}
+
+{% block content %}
+<div class="p-wrap">
+  <div class="p-card">
+    <div class="p-head">
+      <div class="ava">{{ user['username'][0]|upper }}</div>
+      <div class="p-nm">{{ user['full_name'] }}</div>
+      <div class="p-un">@{{ user['username'] }}</div>
+    </div>
+    <div>
+      <div class="ir"><span class="ik">User ID</span><span class="iv">#{{ user['id'] }}</span></div>
+      <div class="ir"><span class="ik">Role</span><span class="iv"><span class="badge badge-{{ user['role'] }}">{{ user['role']|upper }}</span></span></div>
+      <div class="ir"><span class="ik">Perusahaan</span><span class="iv">{{ user['perusahaan'] }}</span></div>
+      <div class="ir"><span class="ik">Lokasi</span><span class="iv">{{ user['lokasi'] }}</span></div>
+      <div class="ir"><span class="ik">No. Telepon</span><span class="iv">{{ user['no_telp'] }}</span></div>
+      <div class="ir"><span class="ik">Bergabung</span><span class="iv">{{ user['bergabung'] }}</span></div>
+      <div class="ir"><span class="ik">Total Order</span><span class="iv">{{ user['total_order'] }} pesanan</span></div>
+    </div>
+  </div>
+  <div>
+    <div class="info-card">
+      <h3>Informasi Akun</h3>
+      <p>Nama lengkap, perusahaan, dan nomor telepon Anda ditampilkan di halaman profil ini.</p>
+      <p>Data ini digunakan untuk verifikasi pengiriman pesanan dan penerbitan faktur transaksi sawit Anda.</p>
+      <p>Untuk mengubah informasi akun Anda, silakan hubungi administrator sistem SawitNet.</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

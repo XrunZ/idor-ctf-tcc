@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Buat Pesanan — SawitNet{% endblock %}
+{% block page_title %}Buat Pesanan Baru{% endblock %}
+{% block sb_role %}{{ user['perusahaan'][:18] }}{% endblock %}
+
+{% block content %}
+<div class="form-card">
+  <div class="card-header"><span class="card-title">Form Pemesanan</span></div>
+  <div class="card-body">
+    {% if success %}
+    <div class="alert-ok">✅ Pesanan berhasil dibuat! Status: <strong>Menunggu</strong></div>
+    {% endif %}
+    <form method="POST" action="{{ url_for('buat_pesanan', user_id=user['id']) }}">
+      <div class="fg">
+        <label>Jenis Sawit</label>
+        <select name="jenis" required onchange="updateHarga(this.value)">
+          <option value="">-- Pilih jenis --</option>
+          <option value="TBS (Tandan Buah Segar)">TBS (Tandan Buah Segar)</option>
+          <option value="CPO (Crude Palm Oil)">CPO (Crude Palm Oil)</option>
+          <option value="PKO (Palm Kernel Oil)">PKO (Palm Kernel Oil)</option>
+          <option value="Kernel Sawit">Kernel Sawit</option>
+        </select>
+      </div>
+      <div class="harga-info" id="harga-info" style="display:none">
+        Harga referensi: <strong id="harga-ref">-</strong> / kg
+      </div>
+      <div class="fg">
+        <label>Berat (kg)</label>
+        <input type="number" name="berat" min="100" max="50000" placeholder="Contoh: 1000" required/>
+      </div>
+      <button type="submit" class="btn">Kirim Pesanan</button>
+    </form>
+  </div>
+</div>
+<script>
+const h={'TBS (Tandan Buah Segar)':'Rp 2.145','CPO (Crude Palm Oil)':'Rp 9.800','PKO (Palm Kernel Oil)':'Rp 7.200','Kernel Sawit':'Rp 3.100'};
+function updateHarga(v){
+  const el=document.getElementById('harga-info'),ref=document.getElementById('harga-ref');
+  if(h[v]){ref.textContent=h[v];el.style.display='block'}else{el.style.display='none'}
+}
+</script>
+{% endblock %}

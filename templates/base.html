@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{% block title %}SawitNet — IDOR CTF{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+  {% block extra_style %}{% endblock %}
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sb-brand">
+      <div class="brand-name">🌴 SawitNet</div>
+      <div class="brand-sub">Platform Pemesanan Sawit</div>
+    </div>
+    <nav class="sb-nav">
+      <div class="nav-lbl">Menu Utama</div>
+      <a class="nav-item {% if page=='dashboard' %}active{% endif %}" href="{{ url_for('dashboard', user_id=logged_in['user_id']) }}">
+        <span class="nav-icon">📊</span> Dashboard
+      </a>
+      <a class="nav-item {% if page=='pesanan' %}active{% endif %}" href="{{ url_for('pesanan', user_id=logged_in['user_id']) }}">
+        <span class="nav-icon">📦</span> Pesanan Saya
+      </a>
+      <a class="nav-item {% if page=='buat_pesanan' %}active{% endif %}" href="{{ url_for('buat_pesanan', user_id=logged_in['user_id']) }}">
+        <span class="nav-icon">🛒</span> Buat Pesanan
+      </a>
+      <a class="nav-item {% if page=='transaksi' %}active{% endif %}" href="{{ url_for('transaksi', user_id=logged_in['user_id']) }}">
+        <span class="nav-icon">💰</span> Riwayat Transaksi
+      </a>
+      <div class="nav-lbl" style="margin-top:10px">Akun</div>
+      <a class="nav-item {% if page=='profil' %}active{% endif %}" href="{{ url_for('profil', user_id=logged_in['user_id']) }}">
+        <span class="nav-icon">👤</span> Profil
+      </a>
+      <a class="nav-item {% if page=='pengaturan' %}active{% endif %}" href="{{ url_for('pengaturan', user_id=logged_in['user_id']) }}">
+        <span class="nav-icon">⚙️</span> Pengaturan
+      </a>
+    </nav>
+    <div class="sb-user">
+      <div class="ava-sm">{{ logged_in['username'][0]|upper }}</div>
+      <div>
+        <div class="ui-name">{{ logged_in['username'] }}</div>
+        <div class="ui-role">{% block sb_role %}Pengguna{% endblock %}</div>
+      </div>
+    </div>
+    <a href="{{ url_for('logout') }}" class="logout-btn">Keluar</a>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <div class="tb-title">{% block page_title %}Dashboard{% endblock %}</div>
+      <div class="tb-right">
+        <span>{{ logged_in['username'] }}</span>
+        <span class="badge badge-{{ logged_in['role'] }}">{{ logged_in['role']|upper }}</span>
+      </div>
+    </div>
+    <div class="content">
+      {% block content %}{% endblock %}
+    </div>
+    <footer>SawitNet v2.2 &nbsp;·&nbsp; Made by WSE DIVISION &lt;/XrunZ&gt;</footer>
+  </div>
+</div>
+</body>
+</html>

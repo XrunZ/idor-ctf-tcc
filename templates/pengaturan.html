@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block title %}Pengaturan — SawitNet{% endblock %}
+{% block page_title %}Pengaturan{% endblock %}
+{% block sb_role %}{{ user['perusahaan'][:18] }}{% endblock %}
+
+{% block content %}
+<div class="s-wrap">
+  <div class="s-card">
+    <div class="s-card-header">Notifikasi</div>
+    <div class="s-row">
+      <div>
+        <div class="s-lbl">Email Notifikasi</div>
+        <div class="s-sub">Kirim notifikasi status pesanan ke alamat email terdaftar</div>
+      </div>
+      <div class="toggle on" onclick="this.classList.toggle('on')"></div>
+    </div>
+    <div class="s-row">
+      <div>
+        <div class="s-lbl">Notifikasi Pesanan</div>
+        <div class="s-sub">Pemberitahuan perubahan status pesanan secara real-time</div>
+      </div>
+      <div class="toggle on" onclick="this.classList.toggle('on')"></div>
+    </div>
+    <div class="s-row">
+      <div>
+        <div class="s-lbl">Notifikasi Harga</div>
+        <div class="s-sub">Informasi perubahan harga kelapa sawit harian</div>
+      </div>
+      <div class="toggle" onclick="this.classList.toggle('on')"></div>
+    </div>
+  </div>
+
+  <div class="s-card">
+    <div class="s-card-header">Privasi</div>
+    <div class="s-row">
+      <div>
+        <div class="s-lbl">Tampilkan Profil</div>
+        <div class="s-sub">Profil Anda dapat dilihat oleh sesama mitra SawitNet</div>
+      </div>
+      <div class="toggle on" onclick="this.classList.toggle('on')"></div>
+    </div>
+    <div class="s-row">
+      <div>
+        <div class="s-lbl">Data Analitik</div>
+        <div class="s-sub">Izinkan pengumpulan data penggunaan untuk optimasi sistem</div>
+      </div>
+      <div class="toggle" onclick="this.classList.toggle('on')"></div>
+    </div>
+  </div>
+
+  <div class="s-card">
+    <div class="s-card-header">Lokalisasi</div>
+    <div class="s-row">
+      <div>
+        <div class="s-lbl">Bahasa Tampilan</div>
+        <div class="s-sub">Bahasa default sistem</div>
+      </div>
+      <span style="font-size: 0.82rem; color: var(--muted); font-weight: 600;">Bahasa Indonesia</span>
+    </div>
+    <div class="s-row">
+      <div>
+        <div class="s-lbl">Zona Waktu</div>
+        <div class="s-sub">Zona waktu aktivitas Anda</div>
+      </div>
+      <span style="font-size: 0.82rem; color: var(--muted); font-weight: 600;">WIB (UTC+7)</span>
+    </div>
+  </div>
+</div>
+{% endblock %}

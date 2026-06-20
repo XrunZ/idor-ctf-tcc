@@ -6,7 +6,7 @@ app = Flask(__name__)
 app.secret_key = os.urandom(24)
 DATABASE = "sawit.db"
 
-FLAG_B64 = os.environ.get("FLAG_B64", "VkVORGUxY2tSVjgxZFVOak15UmZNVVF3VWw5QmF5UXpKRjgwUkcwaGJsOVFjakJtSVd3elgxY2hibjA9")
+FLAG_B64 = os.environ.get("FLAG_B64", "VENDe2xvY2FsX2R1bW15X2ZsYWdfc2VjY2Vzc30=")
 
 def get_db():
     conn = sqlite3.connect(DATABASE)

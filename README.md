@@ -10,7 +10,7 @@ Setelah kontainer berjalan, buka browser dan akses:
    
  👉 [**http://localhost:5000**](http://localhost:5000 "http://localhost:5000")  
 ![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAnEAAAACCAYAAAA3pIp+AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAANElEQVR4nO3OQQmAABRAsSdYxKY/jMFMIZ7ECt5E2BJsmZmt2gMA4C+Otbqr8+sJAACvXQ85QgYXd/O+eQAAAABJRU5ErkJggg==)  
-**👥 Akun Demo **  
+***👥 Akun Demo ***
 Gunakan salah satu kredensial akun berikut untuk masuk pertama kali ke sistem:  
 | | | |  
 |-|-|-|  
@@ -35,7 +35,7 @@ Gunakan salah satu kredensial akun berikut untuk masuk pertama kali ke sistem:
 | sri_wahyuni | sri202 | CV Wahyuni Palm |   
 | teguh_prasetyo | teguh303 | PT Prasetyo Sawit |   
    
-*⚠️ * ***Catatan:*** * Akun Administrator utama bernama * ***XrunZ*** *. Password admin tidak diberikan dan harus dilewati menggunakan teknik eksploitasi IDOR!*  
+⚠️  ***Catatan:***  Akun Administrator utama bernama  ***XrunZ*** *. Password admin tidak diberikan dan harus dilewati menggunakan teknik eksploitasi IDOR!*  
 ![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAnEAAAACCAYAAAA3pIp+AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAANklEQVR4nO3OQQmAABRAsSeYxZw/lieLGMACBrCCNxG2BFtmZquOAAD4i3Ot7mr/egIAwGvXA6fGBdgoVMwYAAAAAElFTkSuQmCC)  
 **🎯 Objektif & Skenario Eksploitasi**  
 1. **Autentikasi Awal:** Login ke sistem menggunakan salah satu akun pengguna biasa di atas.  

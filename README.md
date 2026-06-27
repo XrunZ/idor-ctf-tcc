@@ -1,5 +1,5 @@
 **🌴 SawitNet — IDOR CTF Challenge**  
-***Dibuat oleh:*** * WSE DIVISION </XrunZ> *  
+***Dibuat oleh:*** * XrunZ (WSE DIVISION) *  
 **SawitNet** adalah aplikasi web simulasi pemesanan kelapa sawit yang sengaja dirancang memiliki kerentanan  **IDOR (Insecure Direct Object Reference)**. Challenge ini ditujukan untuk pelatihan keamanan siber (CTF) dalam mempelajari eksploitasi dan remediasi akses kontrol.  
 ![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAnEAAAACCAYAAAA3pIp+AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAANUlEQVR4nO3OQQmAABRAsSdYxZ4/mJjEsxE8W8GbCFuCLTOzVXsAAPzFuVZ3dXw9AQDgtesBxPEF3bv7x0IAAAAASUVORK5CYII=)  
 **🚀 Cara Menjalankan**  

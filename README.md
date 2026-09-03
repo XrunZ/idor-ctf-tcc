@@ -1,16 +1,16 @@
-**🌴 SawitNet — IDOR CTF Challenge**  
+**SawitNet — IDOR CTF Challenge**  
 ***Dibuat oleh:*** ***XrunZ (WSE DIVISION)***  
 **SawitNet** adalah aplikasi web simulasi pemesanan kelapa sawit yang sengaja dirancang memiliki kerentanan  **IDOR (Insecure Direct Object Reference)**. Challenge ini ditujukan untuk pelatihan keamanan siber (CTF) dalam mempelajari eksploitasi dan remediasi akses kontrol.  
 ![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAnEAAAACCAYAAAA3pIp+AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAANUlEQVR4nO3OQQmAABRAsSdYxZ4/mJjEsxE8W8GbCFuCLTOzVXsAAPzFuVZ3dXw9AQDgtesBxPEF3bv7x0IAAAAASUVORK5CYII=)  
-**🚀 Cara Menjalankan**  
+**Cara Menjalankan**  
 Aplikasi ini dapat langsung dijalankan menggunakan Docker Compose:  
 docker compose up --build  
    
 Setelah kontainer berjalan, buka browser dan akses:  
    
- 👉 [**http://localhost:5000**](http://localhost:5000 "http://localhost:5000")  
+  [**http://localhost:5000**](http://localhost:5000 "http://localhost:5000")  
 ![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAnEAAAACCAYAAAA3pIp+AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAANElEQVR4nO3OQQmAABRAsSdYxKY/jMFMIZ7ECt5E2BJsmZmt2gMA4C+Otbqr8+sJAACvXQ85QgYXd/O+eQAAAABJRU5ErkJggg==)  
-***👥 Akun Demo ***
+***Akun Demo ***
 Gunakan salah satu kredensial akun berikut untuk masuk pertama kali ke sistem:  
 | | | |  
 |-|-|-|  
@@ -37,7 +37,7 @@ Gunakan salah satu kredensial akun berikut untuk masuk pertama kali ke sistem:
    
 ⚠️  ***Catatan:***  Akun Administrator utama bernama  ***XrunZ*** *. Password admin tidak diberikan dan harus dilewati menggunakan teknik eksploitasi IDOR!*  
 ![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAnEAAAACCAYAAAA3pIp+AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAANklEQVR4nO3OQQmAABRAsSeYxZw/lieLGMACBrCCNxG2BFtmZquOAAD4i3Ot7mr/egIAwGvXA6fGBdgoVMwYAAAAAElFTkSuQmCC)  
-**🎯 Objektif & Skenario Eksploitasi**  
+**Objektif & Skenario Eksploitasi**  
 1. **Autentikasi Awal:** Login ke sistem menggunakan salah satu akun pengguna biasa di atas.  
 2. **Analisis Pola:** Perhatikan struktur URL halaman dashboard setelah Anda login:  
  http://localhost:5000/dashboard/<user_id>  
@@ -45,7 +45,7 @@ Gunakan salah satu kredensial akun berikut untuk masuk pertama kali ke sistem:
 4. **Temukan Administrator:** Akun admin ( **XrunZ**) terdaftar di database dengan  **ID 13**.  
 5. **Dapatkan Bendera (Flag):** Akses dashboard admin secara tidak sah (/dashboard/13) untuk mendapatkan flag yang tersimpan di sana.  
 ![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAnEAAAACCAYAAAA3pIp+AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAANklEQVR4nO3OMQ2AABAAsSNBCUpfDq4wwIAABiywEZJWQZeZ2ao9AAD+4liruzq/ngAA8Nr1ABweBgdur/QFAAAAAElFTkSuQmCC)  
-**🐛 Analisis Kerentanan & Cara Memperbaikinya**  
+** Analisis Kerentanan & Cara Memperbaikinya**  
 Aplikasi ini rentan karena tidak memvalidasi apakah pengguna yang sedang login di sesi aktif memiliki hak akses untuk membaca profil user_id yang diminta pada URL.  
 **Kode yang Rentan (di **app.py **):**  
 @app.route("/dashboard/<int:user_id>")  

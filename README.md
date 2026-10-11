@@ -84,3 +84,9 @@ docker compose up --build
 ```
 
 Jika `FLAG_B64` tidak di-set, aplikasi memakai **flag dummy lokal** dan mencetak peringatan.
+
+---
+
+## Lisensi
+
+Dirilis di bawah [MIT License](LICENSE) © 2026 XrunZ (WSE DIVISION).

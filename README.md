@@ -1,35 +1,42 @@
-# SawitNet — IDOR CTF Challenge
+<h1 align="center">🌴 SawitNet</h1>
 
-**Dibuat oleh:** XrunZ (WSE DIVISION)
+<p align="center">
+  <b>IDOR CTF Challenge</b><br>
+  <sub>oleh XrunZ · WSE DIVISION</sub>
+</p>
 
-SawitNet adalah aplikasi web simulasi pemesanan kelapa sawit yang **sengaja** dibuat rentan terhadap **IDOR (Insecure Direct Object Reference)**. Challenge ini dipakai untuk pelatihan keamanan siber (CTF) — khususnya belajar menemukan dan memperbaiki celah kontrol akses.
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.11-3776AB?logo=python&logoColor=white" alt="Python 3.11">
+  <img src="https://img.shields.io/badge/Flask-3.0.3-000000?logo=flask&logoColor=white" alt="Flask">
+  <img src="https://img.shields.io/badge/Docker-ready-2496ED?logo=docker&logoColor=white" alt="Docker">
+  <img src="https://img.shields.io/badge/Kategori-Web%20Exploitation-critical" alt="Kategori Web Exploitation">
+  <img src="https://img.shields.io/badge/Lisensi-MIT-2ea44f" alt="Lisensi MIT">
+</p>
 
-> ⚠️ **Disclaimer:** Aplikasi ini dibuat untuk tujuan edukasi. Jangan menjalankan/meniru pola rentan ini di lingkungan produksi nyata.
+Aplikasi web simulasi pemesanan kelapa sawit yang **sengaja** dibuat rentan terhadap **IDOR (Insecure Direct Object Reference)**. Cocok untuk latihan keamanan siber: belajar menemukan, mengeksploitasi, sekaligus memperbaiki celah kontrol akses.
 
----
+> ⚠️ **Disclaimer:** Dibuat murni untuk edukasi. Jangan meniru pola rentan ini di lingkungan produksi.
 
-## Cara Menjalankan
+## 🚀 Cara Menjalankan
 
-**Docker (disarankan):**
+**Docker (disarankan)**
 
 ```bash
 docker compose up --build
 ```
 
-**Tanpa Docker:**
+**Tanpa Docker**
 
 ```bash
 pip install -r requirements.txt
 python app.py
 ```
 
-Lalu buka browser ke: <http://localhost:5000>
+Buka browser ke <http://localhost:5000>.
 
----
+## 🔑 Akun Demo
 
-## Akun Demo
-
-Gunakan salah satu akun berikut untuk masuk pertama kali. Akun administrator **tidak** diberikan — itulah target challenge.
+Masuk pakai salah satu akun berikut. Akun administrator **tidak** diberikan, dan itulah target challenge.
 
 | Username | Password | Perusahaan |
 |---|---|---|
@@ -40,21 +47,17 @@ Gunakan salah satu akun berikut untuk masuk pertama kali. Akun administrator **t
 | hendra_wijaya | hendra654 | PT Sawit Unggul |
 | rina_kusuma | rina987 | CV Mitra Tani |
 
----
-
-## Dokumentasi
+## 📚 Dokumentasi
 
 | File | Untuk siapa | Isi |
 |---|---|---|
-| `chall.md` | **Player** | Deskripsi challenge, hint, format flag |
-| `author-notes.md` | **Panitia (RAHASIA)** | Full chain, solusi, remediasi, catatan deploy |
-| `solve.py` | **Panitia** | Solver otomatis end-to-end |
+| `chall.md` | Player | Deskripsi challenge, hint, format flag |
+| `author-notes.md` | Referensi | Full chain, solusi, remediasi, catatan deploy |
+| `solve.py` | Referensi | Solver otomatis end-to-end |
 
-> ℹ️ Repo ini **publik by design** — siapa pun boleh deploy instance-nya sendiri. `author-notes.md` dan `solve.py` disertakan sebagai **solusi referensi** (silakan dibaca). Kalau challenge ini dipakai untuk **kompetisi nyata**, rahasiakan hanya *flag asli*-nya (set via `.env` yang ter-gitignore). File solusi tetap tidak ikut ter-bake ke image (lihat `.dockerignore`).
+> ℹ️ Repo ini **publik by design**, siapa pun boleh deploy instance-nya sendiri. `author-notes.md` dan `solve.py` disertakan sebagai **solusi referensi**. Kalau dipakai untuk kompetisi nyata, rahasiakan hanya *flag asli*-nya (set via `.env` yang ter-gitignore). File solusi tetap tidak ikut ter-bake ke image (lihat `.dockerignore`).
 
----
-
-## Struktur Proyek
+## 🗂️ Struktur Proyek
 
 ```
 .
@@ -67,26 +70,21 @@ Gunakan salah satu akun berikut untuk masuk pertama kali. Akun administrator **t
 ├── .dockerignore
 ├── requirements.txt
 ├── chall.md              # Dokumentasi untuk player
-├── author-notes.md       # Dokumentasi untuk panitia (rahasia)
+├── author-notes.md       # Solusi referensi
 └── solve.py              # Solver otomatis
 ```
 
----
+## ⚙️ Konfigurasi Flag
 
-## Konfigurasi Flag
-
-Flag dibaca dari env `FLAG_B64` = flag asli yang di-encode base64 **satu kali**. Dashboard menampilkannya dengan encode sekali lagi, jadi player harus **decode 2x**. Lihat `.env.example`.
+Flag dibaca dari env `FLAG_B64`, yaitu flag asli yang di-encode base64 **satu kali**. Dashboard menampilkannya dengan encode sekali lagi, jadi player harus **decode 2x**. Contoh ada di `.env.example`.
 
 ```bash
-# Encode flag asli lalu taruh di .env
 echo "FLAG_B64=$(echo -n 'TCC{flag_asli_kamu}' | base64)" > .env
 docker compose up --build
 ```
 
-Jika `FLAG_B64` tidak di-set, aplikasi memakai **flag dummy lokal** dan mencetak peringatan.
+Kalau `FLAG_B64` tidak di-set, aplikasi memakai **flag dummy lokal** dan mencetak peringatan.
 
----
+## 📄 Lisensi
 
-## Lisensi
-
-Dirilis di bawah [MIT License](LICENSE) © 2026 XrunZ (WSE DIVISION).
+Dirilis di bawah [MIT License](LICENSE). © 2026 XrunZ (WSE DIVISION).

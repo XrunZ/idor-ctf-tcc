@@ -1,4 +1,4 @@
-<h1 align="center">🌴 SawitNet</h1>
+<h1 align="center">SawitNet</h1>
 
 <p align="center">
   <b>IDOR CTF Challenge</b><br>
@@ -15,9 +15,9 @@
 
 Aplikasi web simulasi pemesanan kelapa sawit yang **sengaja** dibuat rentan terhadap **IDOR (Insecure Direct Object Reference)**. Cocok untuk latihan keamanan siber: belajar menemukan, mengeksploitasi, sekaligus memperbaiki celah kontrol akses.
 
-> ⚠️ **Disclaimer:** Dibuat murni untuk edukasi. Jangan meniru pola rentan ini di lingkungan produksi.
+> **Disclaimer:** Dibuat murni untuk edukasi. Jangan meniru pola rentan ini di lingkungan produksi.
 
-## 🚀 Cara Menjalankan
+## Cara Menjalankan
 
 **Docker (disarankan)**
 
@@ -34,7 +34,7 @@ python app.py
 
 Buka browser ke <http://localhost:5000>.
 
-## 🔑 Akun Demo
+## Akun Demo
 
 Masuk pakai salah satu akun berikut. Akun administrator **tidak** diberikan, dan itulah target challenge.
 
@@ -47,7 +47,7 @@ Masuk pakai salah satu akun berikut. Akun administrator **tidak** diberikan, dan
 | hendra_wijaya | hendra654 | PT Sawit Unggul |
 | rina_kusuma | rina987 | CV Mitra Tani |
 
-## 📚 Dokumentasi
+## Dokumentasi
 
 | File | Untuk siapa | Isi |
 |---|---|---|
@@ -55,9 +55,9 @@ Masuk pakai salah satu akun berikut. Akun administrator **tidak** diberikan, dan
 | `author-notes.md` | Referensi | Full chain, solusi, remediasi, catatan deploy |
 | `solve.py` | Referensi | Solver otomatis end-to-end |
 
-> ℹ️ Repo ini **publik by design**, siapa pun boleh deploy instance-nya sendiri. `author-notes.md` dan `solve.py` disertakan sebagai **solusi referensi**. Kalau dipakai untuk kompetisi nyata, rahasiakan hanya *flag asli*-nya (set via `.env` yang ter-gitignore). File solusi tetap tidak ikut ter-bake ke image (lihat `.dockerignore`).
+> Repo ini **publik by design**, siapa pun boleh deploy instance-nya sendiri. `author-notes.md` dan `solve.py` disertakan sebagai **solusi referensi**. Kalau dipakai untuk kompetisi nyata, rahasiakan hanya *flag asli*-nya (set via `.env` yang ter-gitignore). File solusi tetap tidak ikut ter-bake ke image (lihat `.dockerignore`).
 
-## 🗂️ Struktur Proyek
+## Struktur Proyek
 
 ```
 .
@@ -74,7 +74,7 @@ Masuk pakai salah satu akun berikut. Akun administrator **tidak** diberikan, dan
 └── solve.py              # Solver otomatis
 ```
 
-## ⚙️ Konfigurasi Flag
+## Konfigurasi Flag
 
 Flag dibaca dari env `FLAG_B64`, yaitu flag asli yang di-encode base64 **satu kali**. Dashboard menampilkannya dengan encode sekali lagi, jadi player harus **decode 2x**. Contoh ada di `.env.example`.
 
@@ -85,6 +85,6 @@ docker compose up --build
 
 Kalau `FLAG_B64` tidak di-set, aplikasi memakai **flag dummy lokal** dan mencetak peringatan.
 
-## 📄 Lisensi
+## Lisensi
 
 Dirilis di bawah [MIT License](LICENSE). © 2026 XrunZ (WSE DIVISION).

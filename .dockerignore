@@ -1,0 +1,33 @@
+# ── Jangan pernah dimasukkan ke image ─────────────────────
+# Kontrol versi & metadata
+.git
+.gitignore
+.dockerignore
+
+# File author-only / solusi — TIDAK boleh sampai ke player
+README.md
+chall.md
+author-notes.md
+solve.py
+yap.txt
+*.md
+.~lock.*
+
+# Rahasia
+.env
+*.env
+
+# Database runtime (dibuat ulang saat boot)
+*.db
+*.db-journal
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtualenv
+venv/
+.venv/
+env/

@@ -16,3 +16,11 @@ env/
 # Mengabaikan file log / OS metadata
 *.log
 .DS_Store
+
+# Mengabaikan file rahasia env (JANGAN commit flag asli)
+.env
+*.env
+
+# Mengabaikan file lock sementara (LibreOffice dll)
+.~lock.*
+

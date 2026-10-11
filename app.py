@@ -1,12 +1,24 @@
 from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 from functools import wraps
-import sqlite3, random, datetime, os
+import sqlite3, random, datetime, os, sys, base64
 
 app = Flask(__name__)
-app.secret_key = os.urandom(24)
+# SECRET_KEY dari env agar sesi tetap valid saat multi-worker / restart.
+# Fallback acak per-boot hanya untuk pengujian lokal.
+app.secret_key = os.environ.get("SECRET_KEY") or os.urandom(24)
 DATABASE = "sawit.db"
 
-FLAG_B64 = os.environ.get("FLAG_B64", "VENDe2xvY2FsX2R1bW15X2ZsYWdfc2VjY2Vzc30=")
+# Flag asli (plaintext). Env FLAG_B64 = flag ini di-encode base64 SATU kali.
+# Dashboard menampilkan versi yang di-encode DUA kali -> player harus decode 2x.
+# Satu sumber kebenaran: env FLAG_B64. Default = dummy lokal.
+# PENTING: untuk event sungguhan WAJIB override lewat env/.env, jangan pakai default ini.
+DEFAULT_FLAG = "TCC{local_dummy_flag_seccess}"
+FLAG_B64 = os.environ.get("FLAG_B64") or base64.b64encode(DEFAULT_FLAG.encode()).decode()
+# Versi yang ditampilkan ke player (base64 dua layer).
+FLAG_DISPLAY = base64.b64encode(FLAG_B64.encode()).decode()
+if not os.environ.get("FLAG_B64"):
+    print("[!] PERINGATAN: env FLAG_B64 tidak di-set — memakai flag DUMMY lokal. "
+          "Set FLAG_B64 untuk deployment sungguhan.", file=sys.stderr)
 
 def get_db():
     conn = sqlite3.connect(DATABASE)
@@ -129,9 +141,20 @@ def dashboard(user_id):
         return render_template("404.html"), 404
     orders = get_orders(user_id)
     is_admin = (user["role"] == "admin")
-    flag_b64 = FLAG_B64 if is_admin else ""
+    flag_b64 = FLAG_DISPLAY if is_admin else ""
     return render_template("dashboard.html", user=user, orders=orders,
         is_admin=is_admin, flag_b64=flag_b64, logged_in=session, page="dashboard")
+
+# ── DIREKTORI MITRA (breadcrumb) ──────────────────────────
+@app.route("/mitra")
+@login_required
+def mitra():
+    conn = get_db()
+    users = conn.execute(
+        "SELECT id, username, perusahaan, lokasi, bergabung FROM users ORDER BY id").fetchall()
+    conn.close()
+    return render_template("mitra.html", users=users,
+        logged_in=session, page="mitra")
 
 # ── PESANAN ───────────────────────────────────────────────
 @app.route("/pesanan/<int:user_id>")
@@ -205,6 +228,8 @@ def api_profile(user_id):
     if not user: return jsonify({"error":"Not found"}), 404
     return jsonify(dict(user))
 
+# Inisialisasi DB saat import supaya tetap jalan di bawah gunicorn (app:app).
+init_db()
+
 if __name__ == "__main__":
-    init_db()
     app.run(host="0.0.0.0", port=5000, debug=False)

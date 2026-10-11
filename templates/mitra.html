@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Direktori Mitra — SawitNet{% endblock %}
+{% block page_title %}Direktori Mitra{% endblock %}
+
+{% block content %}
+<div class="card">
+  <div class="card-header">
+    <span class="card-title">Mitra Terdaftar</span>
+    <span style="font-size: 0.8rem; color: var(--muted); font-weight: 600;">{{ users|length }} mitra</span>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Perusahaan</th>
+        <th>Lokasi</th>
+        <th>Bergabung</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for u in users %}
+      <tr>
+        <td style="font-weight: 600;">{{ u['username'] }}</td>
+        <td>{{ u['perusahaan'] }}</td>
+        <td>{{ u['lokasi'] }}</td>
+        <td>{{ u['bergabung'] }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

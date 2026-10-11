@@ -28,6 +28,9 @@
       <a class="nav-item {% if page=='transaksi' %}active{% endif %}" href="{{ url_for('transaksi', user_id=logged_in['user_id']) }}">
         <span class="nav-icon">💰</span> Riwayat Transaksi
       </a>
+      <a class="nav-item {% if page=='mitra' %}active{% endif %}" href="{{ url_for('mitra') }}">
+        <span class="nav-icon">🤝</span> Direktori Mitra
+      </a>
       <div class="nav-lbl" style="margin-top:10px">Akun</div>
       <a class="nav-item {% if page=='profil' %}active{% endif %}" href="{{ url_for('profil', user_id=logged_in['user_id']) }}">
         <span class="nav-icon">👤</span> Profil

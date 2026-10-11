@@ -6,6 +6,11 @@ services:
       - "5000:5000"
     restart: unless-stopped
     environment:
-      # Nilai default ini adalah dummy untuk pengujian lokal. Ganti di server produksi.
-      - FLAG_B64=VkVORGUxY2tSVjgxZFVOak15UmZNVVF3VWw5QmF5UXpKRjgwUkcwaGJsOVFjakJtSVd3elgxY2hibjA9
-
+      # FLAG_B64 = flag asli di-encode base64 SATU kali. Aplikasi menampilkannya
+      # dengan encode sekali lagi, jadi player harus decode 2x.
+      # Default di bawah adalah DUMMY lokal. Untuk event sungguhan WAJIB override
+      # lewat file .env (lihat .env.example):
+      #   echo "FLAG_B64=$(echo -n 'TCC{flag_asli}' | base64)" >> .env
+      #   docker compose up --build
+      FLAG_B64: ${FLAG_B64:-VENDe2xvY2FsX2R1bW15X2ZsYWdfc2VjY2Vzc30=}
+      SECRET_KEY: ${SECRET_KEY:-}
